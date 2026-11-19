@@ -1,0 +1,164 @@
+
+let selectedObject = "None";
+let distance = 100;
+let eventCount = 0;
+let soundEnabled = true;
+let vibrationEnabled = true;
+let audioContext = null;
+
+const slider = document.getElementById("distanceSlider");
+
+slider.addEventListener("input", function() {
+    distance = Number(this.value);
+    updateSystem();
+});
+
+function selectObject(object) {
+    selectedObject = object;
+    eventCount++;
+
+    document.getElementById("eventCount").textContent = eventCount;
+    document.getElementById("objectType").textContent = object;
+
+    addHistory(object + " selected at " + distance + "m");
+
+    updateSystem();
+}
+
+function updateSystem() {
+    document.getElementById("distanceValue").textContent = distance;
+
+    const alertBox = document.getElementById("alertBox");
+    const title = document.getElementById("alertTitle");
+    const message = document.getElementById("alertMessage");
+
+    if (selectedObject === "None") {
+        safeState(alertBox, title, message);
+        return;
+    }
+
+    if (distance > 50) {
+        safeState(alertBox, title, message);
+    }
+    else if (distance > 20) {
+        warningState(alertBox, title, message);
+    }
+    else {
+        criticalState(alertBox, title, message);
+    }
+}
+
+function safeState(box, title, message) {
+    box.className = "alert";
+    title.textContent = "ALL CLEAR";
+    message.textContent = "No warning threshold crossed.";
+
+    document.getElementById("systemStatus").textContent = "SYSTEM NORMAL";
+    document.getElementById("zoneStatus").textContent = "SAFE ZONE";
+}
+
+function warningState(box, title, message) {
+    box.className = "alert warning";
+    title.textContent = "⚠ CAUTION ALERT";
+    message.textContent = selectedObject + " detected at " + distance + " metres.";
+
+    document.getElementById("systemStatus").textContent = "CAUTION DETECTED";
+    document.getElementById("zoneStatus").textContent = "WARNING ZONE";
+
+    playSound();
+    vibrate();
+}
+
+function criticalState(box, title, message) {
+    box.className = "alert danger";
+    title.textContent = "🚨 HIGH PRIORITY ALERT";
+    message.textContent = selectedObject + " detected at " + distance + " metres.";
+
+    document.getElementById("systemStatus").textContent = "HIGH PRIORITY ALERT";
+    document.getElementById("zoneStatus").textContent = "ALERT ZONE";
+
+    playSound();
+    vibrate();
+}
+
+function playSound() {
+    if (!soundEnabled) return;
+
+    try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+
+        if (!audioContext) audioContext = new AC();
+
+        if (audioContext.state === "suspended") audioContext.resume();
+
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+
+        oscillator.frequency.value = 750;
+        oscillator.type = "square";
+        gain.gain.value = 0.07;
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.25);
+    } catch(error) {
+        console.log("Audio unavailable", error);
+    }
+}
+
+function vibrate() {
+    if (vibrationEnabled && navigator.vibrate) {
+        navigator.vibrate([150, 100, 150]);
+    }
+}
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+
+    document.getElementById("soundButton").textContent =
+        soundEnabled ? "🔊 Sound ON" : "🔇 Sound OFF";
+}
+
+function toggleVibration() {
+    vibrationEnabled = !vibrationEnabled;
+
+    document.getElementById("vibrationButton").textContent =
+        vibrationEnabled ? "📳 Vibration ON" : "Vibration OFF";
+}
+
+function addHistory(text) {
+    const history = document.getElementById("history");
+
+    if (history.textContent === "No events recorded.") {
+        history.textContent = "";
+    }
+
+    const entry = document.createElement("div");
+    entry.className = "history-item";
+    entry.textContent = new Date().toLocaleTimeString() + " | " + text;
+
+    history.prepend(entry);
+
+    if (history.children.length > 30) {
+        history.removeChild(history.lastChild);
+    }
+}
+
+function resetSystem() {
+    distance = 100;
+    selectedObject = "None";
+
+    slider.value = 100;
+
+    document.getElementById("objectType").textContent = "None";
+    document.getElementById("distanceValue").textContent = "100";
+
+    if (navigator.vibrate) navigator.vibrate(0);
+
+    updateSystem();
+}
+
+updateSystem();

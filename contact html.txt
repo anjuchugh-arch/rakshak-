@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | RAKSHAK DRIVE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<div class="logo">RAKSHAK <span>DRIVE</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="features">
+<h2>Contact & Project Information</h2>
+
+<div class="panel">
+<h3>RAKSHAK DRIVE</h3>
+<p>Smart Road Safety Innovation Project</p>
+<br>
+
+<h3>Project Category</h3>
+<p>Artificial Intelligence and Road Safety</p>
+<br>
+
+<h3>Project Objective</h3>
+<p>Demonstrating proximity-based pedestrian and animal alerts.</p>
+<br>
+
+<h3>Project Platform</h3>
+<p>Startup India Educational Demonstration</p>
+<br>
+
+<h3>Get in Touch</h3>
+<p>For project enquiries, contact the project team through your school or project mentor.</p>
+<br>
+
+<a class="main-btn" href="index.html">Back to Home</a>
+</div>
+</section>
+
+<footer>
+<h2>RAKSHAK DRIVE</h2>
+<p>Technology for Safer Roads</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAKSHAK DRIVE | Smart Road Safety</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">RAKSHAK <span>DRIVE</span></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="tag">AI-INSPIRED ROAD SAFETY PROJECT</p>
+        <h1>Making Roads<br><span>Safer for Everyone.</span></h1>
+        <p>
+            An intelligent road safety concept that demonstrates
+            pedestrian and animal detection with distance-based
+            audio and vibration alerts.
+        </p>
+        <a href="#dashboard" class="main-btn">Explore Dashboard</a>
+    </div>
+    <div class="hero-icon">🚘</div>
+</section>
+
+<section class="features">
+    <h2>Our Technology</h2>
+    <div class="feature-grid">
+        <div class="feature">
+            <div>📷</div>
+            <h3>AI Detection Concept</h3>
+            <p>Identifies pedestrians and animals in the demonstration.</p>
+        </div>
+        <div class="feature">
+            <div>📡</div>
+            <h3>Distance Monitoring</h3>
+            <p>Demonstrates a configurable 50-metre warning zone.</p>
+        </div>
+        <div class="feature">
+            <div>🔊</div>
+            <h3>Audio Alerts</h3>
+            <p>Provides simulated sound warnings.</p>
+        </div>
+        <div class="feature">
+            <div>📳</div>
+            <h3>Vibration Alerts</h3>
+            <p>Demonstrates haptic warning feedback.</p>
+        </div>
+    </div>
+</section>
+
+<section id="dashboard" class="dashboard-section">
+    <h2>Interactive Safety Dashboard</h2>
+    <p class="subheading">Try our educational simulation.</p>
+
+    <div class="dashboard">
+        <div class="panel">
+            <h3>Object Detection</h3>
+            <div class="objects">
+                <button onclick="selectObject('Pedestrian')">
+                    🚶 Detect Person
+                </button>
+                <button onclick="selectObject('Animal')">
+                    🐕 Detect Animal
+                </button>
+            </div>
+
+            <h3>Simulated Distance</h3>
+            <div class="distance-number">
+                <span id="distanceValue">100</span> m
+            </div>
+
+            <input type="range" id="distanceSlider"
+            min="1" max="100" value="100">
+
+            <div class="range-labels">
+                <span>1 m</span>
+                <span>50 m</span>
+                <span>100 m</span>
+            </div>
+
+            <div id="alertBox" class="alert">
+                <h3 id="alertTitle">ALL CLEAR</h3>
+                <p id="alertMessage">Waiting for a detection event.</p>
+            </div>
+
+            <div class="buttons">
+                <button onclick="toggleSound()" id="soundButton">
+                    🔊 Sound ON
+                </button>
+                <button onclick="toggleVibration()" id="vibrationButton">
+                    📳 Vibration ON
+                </button>
+            </div>
+
+            <button class="reset" onclick="resetSystem()">
+                Reset Simulation
+            </button>
+        </div>
+
+        <div class="panel">
+            <h3>Live System Status</h3>
+            <div class="status-card">
+                <p id="systemStatus">SYSTEM READY</p>
+                <span id="zoneStatus">SAFE ZONE</span>
+            </div>
+
+            <div class="stats">
+                <div>
+                    <h2 id="eventCount">0</h2>
+                    <p>Detection Events</p>
+                </div>
+                <div>
+                    <h2 id="objectType">None</h2>
+                    <p>Detected Object</p>
+                </div>
+            </div>
+
+            <h3>Detection History</h3>
+            <div id="history" class="history">
+                No events recorded.
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2>RAKSHAK DRIVE</h2>
+    <p>Innovation for Safer Roads</p>
+    <p>Startup India Educational Project</p>
+    <p class="disclaimer">
+        This website is a simulation, not a certified vehicle safety system.
+        It does not detect actual road users or measure actual distances.
+    </p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

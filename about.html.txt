@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | RAKSHAK DRIVE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<div class="logo">RAKSHAK <span>DRIVE</span></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="features">
+<h2>About RAKSHAK DRIVE</h2>
+<div class="panel">
+<h3>Our Vision</h3>
+<p>To explore innovative technologies that can contribute to safer roads and improve awareness of vulnerable road users.</p>
+<br>
+<h3>Our Mission</h3>
+<p>To demonstrate how object detection, distance estimation and accessible warning interfaces could work together in a future road safety system.</p>
+<br>
+<h3>Our Proposed Technology</h3>
+<p>AI camera-based object recognition, distance estimation, processing systems, audio warnings and haptic alerts.</p>
+<br>
+<h3>Our Innovation</h3>
+<p>A concept that brings together pedestrian and animal detection with multiple forms of warning feedback.</p>
+<br>
+<h3>Our Goal</h3>
+<p>To encourage research, responsible innovation and safer mobility technology.</p>
+<br>
+<a class="main-btn" href="index.html">Explore Our Dashboard</a>
+</div>
+</section>
+
+<footer>
+<h2>RAKSHAK DRIVE</h2>
+<p>Innovation for Safer Roads</p>
+</footer>
+
+</body>
+</html>
